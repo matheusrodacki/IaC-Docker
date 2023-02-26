@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "beanstalk_deploys" {
-  bucket = "${var.name}-deploys"
+  bucket = "mrf-${var.name}-deploys"
 
 }
 
@@ -7,7 +7,7 @@ resource "aws_s3_bucket_object" "docker" {
     depends_on = [
         aws_s3_bucket.beanstalk_deploys
     ]
-  bucket = "${var.name}-deploys"
+  bucket = "mrf-${var.name}-deploys"
   key    = "${var.name}.zip"
   source = "${var.name}.zip"
 
