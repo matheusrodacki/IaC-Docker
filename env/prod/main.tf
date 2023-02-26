@@ -1,9 +1,9 @@
-module "Producao" {
+module "production" {
   source = "../../Infra"
 
-  name = "App-Prod"
-  description = "Production-Application"
+  name = "app-Prod"
+  description = "production-application"
   max = 5
   instance = "t2.micro"
-  env = "Production-Environment"
+  env = "production-environment"
 }

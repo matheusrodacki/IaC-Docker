@@ -1,9 +1,9 @@
 module "homologation" {
   source = "../../Infra"
 
-  name = "App-Homolog"
-  description = "Homologation-Application"
+  name = "app-homolog"
+  description = "homologation-application"
   max = 3
   instance = "t2.micro"
-  env = "Homologation-Environment"
+  env = "homologation-environment"
 }
