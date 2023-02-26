@@ -1,5 +1,5 @@
 module "production" {
-  source = "../../Infra"
+  source = "../../infra"
 
   name = "app-Prod"
   description = "production-application"
