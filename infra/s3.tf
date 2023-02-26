@@ -1,13 +1,13 @@
-resource "aws_s3_bucket" "beanstalk_deplays" {
-  bucket = "${var.name}-deplays"
+resource "aws_s3_bucket" "beanstalk_deploys" {
+  bucket = "${var.name}-deploys"
 
 }
 
 resource "aws_s3_bucket_object" "docker" {
     depends_on = [
-        aws_s3_bucket.beanstalk_deplays
+        aws_s3_bucket.beanstalk_deploys
     ]
-  bucket = "${var.name}-deplays"
+  bucket = "${var.name}-deploys"
   key    = "${var.name}.zip"
   source = "${var.name}.zip"
 
