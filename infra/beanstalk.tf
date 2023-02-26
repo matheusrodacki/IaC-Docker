@@ -30,7 +30,7 @@ setting {
 
 resource "aws_elastic_beanstalk_application_version" "default" {
   depends_on = [
-    aws_elastic_beanstalk_environment.beanstalk_env, aws_elastic_beanstalk_application.beanstalk_app, aws_s3_bucket_object.docker
+    aws_elastic_beanstalk_environment.beanstalk_env,aws_elastic_beanstalk_application.beanstalk_app,aws_s3_bucket_object.docker
   ]
   name        = var.env
   application = var.name
