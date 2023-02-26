@@ -1,0 +1,3 @@
+variable "reponame"{
+    type = string
+}
