@@ -36,5 +36,5 @@ resource "aws_elastic_beanstalk_application_version" "default" {
   application = var.name
   description = var.description
   bucket      = aws_s3_bucket.beanstalk_deploys.id
-  key         = aws_s3_object.docker.id
+  key         = aws_s3_bucket_object.docker.id
 }
