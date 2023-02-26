@@ -17,7 +17,3 @@ variable "instance"{
 variable "max"{
     type = number
 }
-
-variable "min"{
-    type = number
-}
