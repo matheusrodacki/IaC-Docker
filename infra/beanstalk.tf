@@ -3,10 +3,10 @@ resource "aws_elastic_beanstalk_application" "beanstalk_app" {
   description = var.description
 }
 
-resource "aws_elastic_beanstalk_environment" "ambiente_beanstalk" {
+resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
   name                = var.env
   application         = aws_elastic_beanstalk_application.beanstalk_app.name
-  solution_stack_name = "64bit Amazon Linux 2 v3.4.10 running Docker"
+  solution_stack_name = "64bit Amazon Linux 2 v3.5.4 running Docker"
 
 setting {
     namespace = "aws:autoscaling:launchconfiguration"
