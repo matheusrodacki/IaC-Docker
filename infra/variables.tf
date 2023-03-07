@@ -5,3 +5,7 @@ variable "repoName"{
 variable "cargoIAM" {
     type = string
 }
+
+variable "environment" {
+    type = string
+}
