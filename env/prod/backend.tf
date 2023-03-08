@@ -2,6 +2,6 @@ terraform {
   backend "s3" {
     bucket = "terraform-state-mrf"
     key    = "prod/terraform.tfstate"
-    region = "sa-east-1"
+    region = "us-west-2"
   }
 }
