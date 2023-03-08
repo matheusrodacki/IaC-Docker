@@ -7,5 +7,5 @@ module "production" {
 }
 
 output "IP_alb" {
-  value = module.prod.IP
+  value = module.production.IP
 }

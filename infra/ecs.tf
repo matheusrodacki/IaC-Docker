@@ -1,14 +1,19 @@
 module "ecs" {
-  source = "terraform-aws-modules/ecs/aws"
+    source = "terraform-aws-modules/ecs/aws"
 
-  name               = var.environment
-  container_insights = true
-  capacity_providers = ["FARGATE"]
-  default_capacity_provider_strategy = [
-    {
-      capacity_provider = "FARGATE"
+    cluster_name = var.environment
+    
+    fargate_capacity_providers = {
+        FARGATE = {
+            default_capacity_provider_strategy = {
+            weight = 100
+            }     
+        }
     }
-  ]
+  cluster_settings = {
+    "name": "containerInsights",
+    "value": "enabled"
+  }
 }
 
 resource "aws_ecs_task_definition" "Django-API" {
@@ -21,8 +26,8 @@ resource "aws_ecs_task_definition" "Django-API" {
   container_definitions = jsonencode(
     [
       {
-        "name"      = var.environment
-        "image"     = "221201751884.dkr.ecr.sa-east-1.amazonaws.com/prod:v1"
+        "name"      = "production"
+        "image"     = "221201751884.dkr.ecr.sa-east-1.amazonaws.com/prod_repo:v1"
         "cpu"       = 256
         "memory"    = 512
         "essential" = true
@@ -32,7 +37,31 @@ resource "aws_ecs_task_definition" "Django-API" {
             "hostPort"      = 8000
           }
         ]
+        "command": ["CMD-SHELL","curl -f http://localhost:3000/health || exit 1"]        
       }
     ]
   )
+}
+
+resource "aws_ecs_service" "Django-API" {
+  name            = "Django-API"
+  cluster         = module.ecs.cluster_id
+  task_definition = aws_ecs_task_definition.Django-API.arn
+  desired_count   = 3
+
+  load_balancer {
+    target_group_arn = aws_lb_target_group.target.arn
+    container_name   = "production"
+    container_port   = 8000
+  }
+
+  network_configuration {
+      subnets = module.vpc.private_subnets
+      security_groups = [aws_security_group.private_group.id]
+  }
+
+  capacity_provider_strategy {
+      capacity_provider = "FARGATE"
+      weight = 1 #100/100
+  }
 }
