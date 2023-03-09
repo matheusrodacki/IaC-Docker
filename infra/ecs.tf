@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "Django-API" {
     [
       {
         "name"      = var.environment
-        "image"     = "221201751884.dkr.ecr.sa-east-1.amazonaws.com/prod:v1"
+        "image"     = "221201751884.dkr.ecr.us-west-2.amazonaws.com/prod:v1"
         "cpu"       = 256
         "memory"    = 512
         "essential" = true
