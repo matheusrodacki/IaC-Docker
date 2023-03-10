@@ -4,3 +4,6 @@ module "production" {
   
 }
 
+output "domainName" {
+  value = module.production.URL
+}
