@@ -1,9 +1,11 @@
 module "production" {
   source = "../../infra"
+  repoName = "production"
+  cargoIAM = "production"
+  environment = "production"
+  
+}
 
-  name = "prod"
-  description = "production-application"
-  max = 5
-  instance = "t2.micro"
-  env = "production-environment"
+output "IP_alb" {
+  value = module.production.IP
 }

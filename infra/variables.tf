@@ -1,19 +1,19 @@
-variable "name"{
+variable "repoName"{
     type = string
 }
 
-variable "description"{
+variable "cargoIAM" {
     type = string
 }
 
-variable "env"{
+variable "environment" {
     type = string
 }
-
-variable "instance"{
-    type = string
-}
-
-variable "max"{
-    type = number
-}
+#
+#variable "health_check_path" {
+#  default = "/health"
+#}
+#
+#variable "matcher_ports" {
+#  default = "200,302"
+#}
