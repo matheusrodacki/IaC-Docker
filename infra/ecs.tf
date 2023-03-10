@@ -27,7 +27,7 @@ resource "aws_ecs_task_definition" "Django-API" {
     [
       {
         "name"      = "production"
-        "image"     = "221201751884.dkr.ecr.us-west-2.amazonaws.com/prod_repo:v1"
+        "image"     = "221201751884.dkr.ecr.us-west-2.amazonaws.com/production:v1"
         "cpu"       = 256
         "memory"    = 512
         "essential" = true
@@ -37,7 +37,7 @@ resource "aws_ecs_task_definition" "Django-API" {
             "hostPort"      = 8000
           }
         ]
-        "command": ["CMD-SHELL","curl -f http://localhost:3000/health || exit 1"]        
+                
       }
     ]
   )
@@ -57,7 +57,7 @@ resource "aws_ecs_service" "Django-API" {
 
   network_configuration {
       subnets = module.vpc.private_subnets
-      security_groups = [aws_security_group.private_group.id]
+      security_groups = [aws_security_group.private.id]
   }
 
   capacity_provider_strategy {

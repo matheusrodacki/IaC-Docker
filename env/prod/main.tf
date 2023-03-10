@@ -1,6 +1,6 @@
 module "production" {
   source = "../../infra"
-  repoName = "prod_repo"
+  repoName = "production"
   cargoIAM = "production"
   environment = "production"
   

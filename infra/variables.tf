@@ -9,11 +9,11 @@ variable "cargoIAM" {
 variable "environment" {
     type = string
 }
-
-variable "health_check_path" {
-  default = "/health"
-}
-
-variable "matcher_ports" {
-  default = "200,302"
-}
+#
+#variable "health_check_path" {
+#  default = "/health"
+#}
+#
+#variable "matcher_ports" {
+#  default = "200,302"
+#}
