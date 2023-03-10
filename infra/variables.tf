@@ -1,14 +1,8 @@
-variable "repoName"{
+variable "cluster_name"{
     type = string
 }
 
-variable "cargoIAM" {
-    type = string
-}
 
-variable "environment" {
-    type = string
-}
 #
 #variable "health_check_path" {
 #  default = "/health"
