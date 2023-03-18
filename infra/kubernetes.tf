@@ -70,12 +70,12 @@ resource "kubernetes_service" "LoadBalancer" {
   }
 }
 
-data "kubernetes_service" "DNSpath" {
-    metadata {
-      name = "loadbalancer-django-api"
-    }
-}
-
-output "URL" {
-    value = data.kubernetes_service.DNSpath.status
-}
+#data "kubernetes_service" "DNSpath" {
+#    metadata {
+#      name = "loadbalancer-django-api"
+#    }
+#}
+#
+#output "URL" {
+#    value = data.kubernetes_service.DNSpath.status
+#}

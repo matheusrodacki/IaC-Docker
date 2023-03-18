@@ -4,6 +4,6 @@ module "production" {
   
 }
 
-output "domainName" {
-  value = module.production.URL
-}
+#output "domainName" {
+#  value = module.production.URL
+#}
